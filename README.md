@@ -1,12 +1,12 @@
 # Moonad
 
-![GitHub Actions Tests](https://github.com/2hit-io/moonad/actions/workflows/unit-tests.yml/badge.svg)
+![GitHub Actions Tests](https://github.com/2hit-io/moonad/actions/workflows/unit-tests.yml/badge.svg) ![NuGet](https://buildstats.info/nuget/Moonad)
 
- A simple F#'s monads port for C#.
+A simple F#'s monads port for C#.
 
- This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C# on top of `netstandard2.1`.
+This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C# on top of `netstandard2.1`.
 
- ## Installing
+## Installing
 The project's package can be found on [Nuget](https://nuget.org/packages/moonad) and installed by your IDE or shell as following:
 
 ```shell
