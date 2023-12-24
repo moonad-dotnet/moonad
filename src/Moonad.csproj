@@ -15,7 +15,8 @@
     <PackageIcon>Resources\icon.png</PackageIcon>
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,10 +25,15 @@
       <PackagePath>Resources</PackagePath>
       <Visible>False</Visible>
     </None>
-    <None Include="..\LICENSE" Pack="true" Visible="false" PackagePath="Resources" />
     <None Include="..\README.md">
       <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
+      <PackagePath>Resources</PackagePath>
+      <Visible>False</Visible>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>Resources</PackagePath>
+      <Visible>False</Visible>
     </None>
   </ItemGroup>
 
