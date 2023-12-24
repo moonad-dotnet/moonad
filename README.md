@@ -1,4 +1,7 @@
 # Moonad
+
+![GitHub Actions Tests](https://github.com/2hit-io/moonad/actions/workflows/unit-tests.yml/badge.svg)
+
  A simple F#'s monads port for C#.
 
  This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C# on top of `netstandard2.1`.
