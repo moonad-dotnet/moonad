@@ -21,6 +21,14 @@ namespace Moonad
             return false;
         }
 
+        public override bool Equals(object obj)
+        {
+            if(obj is null || obj is not ValueOption<T> other)
+                return false;
+
+            return Equals(other);
+        }
+
         public override int GetHashCode()
         {
             if (IsSome)
