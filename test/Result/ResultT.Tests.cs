@@ -12,22 +12,25 @@
             //Assert
             Assert.True(result1);
             Assert.False(result1.IsError);
-            Assert.Equal(result1.Value, result1);
+            Assert.Equal<int>(result1.Value, result1);
             Assert.True(result2);
             Assert.False(result2.IsError);
-            Assert.Equal(result2.Value, result2);
+            Assert.Equal<int>(result2.Value, result2);
         }
 
         [Fact]
         public void Failure()
         {
             //Arrange
-            var result = Result<int>.Failure();
+            static Result<int> CreateFailure() => Result<int>.Failure();
+            
+            //Act
+            var result = CreateFailure();
 
             //Assert
-            Assert.False(result);
             Assert.True(result.IsError);
-            Assert.Throws<ResultValueException>(() => result.Value);
+            Assert.False(result);
+            Assert.Throws<ResultValueException>(() => CreateFailure().Value);
         }
     }
 }

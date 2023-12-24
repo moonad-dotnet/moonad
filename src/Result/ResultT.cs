@@ -1,6 +1,6 @@
 ﻿namespace Moonad
 {
-    public readonly struct Result<T> where T : notnull
+    public readonly ref struct Result<T> where T : notnull
     {
         private readonly T ResultValue;
         
@@ -21,6 +21,9 @@
 
         public static implicit operator Result<T>(T value) =>
             new(value);
+
+        public static implicit operator T(Result<T> result) =>
+            result.Value;
 
         public static implicit operator bool(Result<T> result) =>
             result.IsOk;

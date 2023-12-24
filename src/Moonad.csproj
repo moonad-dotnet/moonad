@@ -10,7 +10,7 @@
     <Authors>2Hit</Authors>
     <Description>A simple F#'s monads port for C#</Description>
     <PackageProjectUrl>https://www.nuget.org/packages/moonad</PackageProjectUrl>
-    <RepositoryUrl>https://github/2hit-io/moonad</RepositoryUrl>
+    <RepositoryUrl>https://github.com/2hit-io/moonad</RepositoryUrl>
     <Copyright>2023 2Hit</Copyright>
     <PackageIcon>Resources\icon.png</PackageIcon>
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
