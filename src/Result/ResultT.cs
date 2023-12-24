@@ -1,6 +1,6 @@
 ﻿namespace Moonad
 {
-    public readonly struct Result<T> where T : notnull
+    public readonly ref struct Result<T> where T : notnull
     {
         private readonly T ResultValue;
         
