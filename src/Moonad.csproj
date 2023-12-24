@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>$(AssemblyName)</Title>
+    <Authors>2Hit</Authors>
+    <Description>A simple F#'s monads port for C#</Description>
+    <PackageProjectUrl>https://www.nuget.org/packages/moonad</PackageProjectUrl>
+    <RepositoryUrl>https://github/2hit-io/moonad</RepositoryUrl>
+    <Copyright>2023 2Hit</Copyright>
+    <PackageIcon>Resources\icon.png</PackageIcon>
+    <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
+    <PackageTags>monad;monads;functional</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>Resources</PackagePath>
+      <Visible>False</Visible>
+    </None>
+    <None Include="..\LICENSE" Pack="true" Visible="false" PackagePath="Resources" />
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
