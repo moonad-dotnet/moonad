@@ -29,7 +29,7 @@ jobs:
     - name: dotnet-tests-report
       uses: zyborg/dotnet-tests-report@v1.4.4
       with:
-          project_path: tests/Moonad.Tests
+          project_path: test/Moonad.Tests
           report_name: moonad_tests
           report_title: Moonad Tests Report
             
