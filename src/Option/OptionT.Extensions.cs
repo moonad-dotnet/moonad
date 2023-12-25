@@ -20,7 +20,7 @@ namespace Moonad
             return new Option<T>.Some(value);
         }
 
-        public static Option<T> ToOption<T>(ref this T? value) where T : struct
+        public static Option<T> ToOption<T>(this T? value) where T : struct
         {
             if (value.HasValue)
                 return new Option<T>.Some(value.Value);

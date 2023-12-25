@@ -6,10 +6,10 @@ namespace Moonad.Tests.ValueOptions
         public void ConvertNullableValNullToNone()
         {
             //Arrange
-            int? nullableInt = null;
+            static int? GetNullableInt() => null;
 
             //Act
-            ValueOption<int> option = nullableInt;
+            var option = GetNullableInt().ToValueOption();
 
             //Assert
             Assert.True(option.IsNone);

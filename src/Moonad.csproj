@@ -16,7 +16,7 @@
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
