@@ -26,12 +26,3 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: dotnet-tests-report
-      uses: zyborg/dotnet-tests-report@v1.4.4
-      with:
-          project_path: test/Moonad.Tests
-          report_name: moonad_tests
-          report_title: Moonad Tests Report
-          gist_name: moonad_tests.md
-          gist_badge_label: 'Test Stats: %Counters_passed%/%Counters_total%'
-            
