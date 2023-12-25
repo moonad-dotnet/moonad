@@ -10,7 +10,7 @@
             return value.Get();
         }
         
-        public static ValueOption<T> ToValueOption<T>(ref this T? value) where T : struct
+        public static ValueOption<T> ToValueOption<T>(this T? value) where T : struct
         {
             if (value.HasValue)
                 return value.Value;
