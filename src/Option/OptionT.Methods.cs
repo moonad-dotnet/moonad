@@ -157,17 +157,17 @@ namespace Moonad
         public T[] ToArray()
         {
             if (this is None)
-                return Array.Empty<T>();
+                return [];
 
-            return new T[] { Get() };
+            return [Get()];
         }
 
         public List<T> ToList()
         {
             if (this is None)
-                return new List<T>();
+                return [];
 
-            return new List<T>() { Get() };
+            return [Get()];
         }
     }
 }

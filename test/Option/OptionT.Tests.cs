@@ -81,6 +81,18 @@ namespace Moonad.Tests.Options
         }
 
         [Theory]
+        [InlineData(1, true)]
+        [InlineData(null, false)]
+        public void ImplicitOperatorBool(int? input, bool expected)
+        {
+            //Arrange
+            Option<int> option = input.ToOption();
+
+            //Assert
+            Assert.Equal(expected, option);
+        }
+
+        [Theory]
         [InlineData("Test", "Some Test")]
         [InlineData(null, "None")]
         public void OptionToString(string? input, string expected)

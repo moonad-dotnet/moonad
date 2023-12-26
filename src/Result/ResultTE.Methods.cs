@@ -111,9 +111,9 @@ namespace Moonad
         public List<TResult> ToList() 
         {
             if (IsError)
-                return new List<TResult>();
+                return [];
 
-            return new List<TResult> { ResultValue! };
+            return [ResultValue!];
         }
 
         public Option<TResult> ToOption() 
