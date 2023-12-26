@@ -1,6 +1,7 @@
 # Moonad
 
-![GitHub Actions Tests](https://github.com/2hit-io/moonad/actions/workflows/unit-tests.yml/badge.svg) ![NuGet](https://buildstats.info/nuget/Moonad)
+![Version](https://img.shields.io/nuget/v/moonad?label=version&color=029632) ![Tests](https://img.shields.io/github/actions/workflow/status/2hit-io/moonad/unit-tests.yml?logo=github&label=tests&color=029632) ![Nuget](https://img.shields.io/nuget/dt/moonad?logo=nuget&label=downloads&color=029632)
+
 
 A simple F#'s monads port for C#.
 
