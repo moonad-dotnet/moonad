@@ -30,6 +30,11 @@
             return option.Get();
         }
 
+        public static implicit operator bool(Option<T> option)
+        { 
+            return option.IsSome;
+        }
+
         public override string ToString()
         {
             if (this is None)
