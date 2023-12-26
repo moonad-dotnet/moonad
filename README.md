@@ -127,3 +127,7 @@ public ValueOption<int> ReturnWhenGreaterThanZero(int input) =>
 We ask for your patience while we still develop the docs about all the resources of each monad available on this lib. While waiting it's possible to check the source code and the [F# docs](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core.html) to have an idea on how this lib works.
 
 Thanks!
+
+## Links
+
+- [Changelog](https://github.com/2hit-io/moonad/blob/main/CHANGELOG.md)
