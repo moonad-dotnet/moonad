@@ -21,7 +21,7 @@ PM> Install-Package Moonad
 
 ### A Note on Null Reference Types
 
-Since our main goal is to protect the user from the infamous `NullReferenceException` we strongly recommend the use of [Nullable Reference Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types) on any project which uses this lib.
+Since our main goal is to protect the user from `NullReferenceException` we strongly recommend the use of [Nullable Reference Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types) on any project which uses this lib.
 
 ## The Monads
 
@@ -44,7 +44,7 @@ public Choice<int, string> Choose(bool returnInt)
 
 ### Result
 
-A type to express the final state of a given operation revealing its success of failure and optionally carrying a value or an error.
+A type to express the final state of a given processing revealing its success of failure and optionally carrying a value or an error.
 
 Example 1 - Success indicator:
 
@@ -64,20 +64,7 @@ public Result Send(Message message)
 }
 ```
 
-Example 2 - Value bag:
-
-```c#
-public Result<User> Create(...)
-{
-    //When a guard clause is actioned
-    return Result<User>.Failure();
-
-    //When all is valid
-    return new User(...);
-}
-```
-
-Example 3 - Value and Error bag
+Example 2 - Value and error returning:
 
 ```c#
 public Result<User, IError> Create(...)
@@ -92,7 +79,7 @@ public Result<User, IError> Create(...)
 
 ### Option
 
-This monad, also known as `Maybe`, has as its goal preventing the `NullReferenceException`. Once a potentially null value is converted to Option it's evaluated to a `Some` instance, which carry the value, or a `None` instance, which replaces the `null` and let the client works as it doesn't exists.
+This monad, also known as `Maybe`, has as its goal preventing the `NullReferenceException` by notifying the existence or absense of a value. Once a potentially null, or simply absent, value is converted to Option it's evaluated to a `Some` instance, which carry the value, or a `None` instance, which replaces the `null` and let the client works as `null` doesn't exists.
 
 Example 1 - Preventing null from a 3rd party lib:
 ```c#
