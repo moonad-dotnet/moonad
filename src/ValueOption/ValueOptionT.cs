@@ -23,6 +23,11 @@
             return option.Get();
         }
 
+        public static implicit operator bool (ValueOption<T> option) 
+        {
+            return option.IsSome;
+        }
+
         public static ValueOption<T> Some(T value)
         {
             return new(value);
