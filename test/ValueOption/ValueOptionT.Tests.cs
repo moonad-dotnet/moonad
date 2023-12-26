@@ -42,6 +42,18 @@ namespace Moonad.Tests.ValueOptions
         }
 
         [Theory]
+        [InlineData(10, true)]
+        [InlineData(null, false)]
+        public void ImplicitOperatorBool(int? input, bool expected)
+        {
+            //Act
+            var option = input.ToValueOption();
+
+            //Assert
+            Assert.Equal(expected, option);
+        }
+
+        [Theory]
         [InlineData((byte)10, "Some 10")]
         [InlineData(null, "None")]
         public void ValueOptionToString(byte? input, string expected)
