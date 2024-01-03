@@ -131,4 +131,4 @@ Thanks!
 
 ## Links
 
-- [https://github.com/2hit-io/moonad/blob/main/CHANGELOG.md](https://github.com/2hit-io/moonad/wiki/Changelog)
+- [Changelog](https://github.com/2hit-io/moonad/wiki/Changelog)
