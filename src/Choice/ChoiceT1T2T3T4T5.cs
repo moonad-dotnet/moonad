@@ -5,22 +5,22 @@ namespace Moonad
     public readonly struct Choice<T1, T2, T3, T4, T5> : IChoice, IEquatable<Choice<T1, T2, T3, T4, T5>>
         where T1 : notnull where T2 : notnull where T3 : notnull where T4 : notnull where T5 : notnull
     {
-        public readonly IChoice Choosed;
+        public readonly IChoice Chosen;
 
         public Choice(T1 choice) =>
-            Choosed = new Choice<T1>(choice);
+            Chosen = new Choice<T1>(choice);
 
         public Choice(T2 choice) =>
-            Choosed = new Choice<T2>(choice);
+            Chosen = new Choice<T2>(choice);
 
         public Choice(T3 choice) =>
-            Choosed = new Choice<T3>(choice);
+            Chosen = new Choice<T3>(choice);
 
         public Choice(T4 choice) =>
-            Choosed = new Choice<T4>(choice);
+            Chosen = new Choice<T4>(choice);
 
         public Choice(T5 choice) =>
-            Choosed = new Choice<T5>(choice);
+            Chosen = new Choice<T5>(choice);
 
         public static implicit operator Choice<T1, T2, T3, T4, T5>(T1 choice) =>
             new(choice);
@@ -38,19 +38,19 @@ namespace Moonad
             new(choice);
 
         public static implicit operator T1(Choice<T1, T2, T3, T4, T5> choice) =>
-            (Choice<T1>)choice.Choosed;
+            (Choice<T1>)choice.Chosen;
 
         public static implicit operator T2(Choice<T1, T2, T3, T4, T5> choice) =>
-            (Choice<T2>)choice.Choosed;
+            (Choice<T2>)choice.Chosen;
 
         public static implicit operator T3(Choice<T1, T2, T3, T4, T5> choice) =>
-            (Choice<T3>)choice.Choosed;
+            (Choice<T3>)choice.Chosen;
 
         public static implicit operator T4(Choice<T1, T2, T3, T4, T5> choice) =>
-            (Choice<T4>)choice.Choosed;
+            (Choice<T4>)choice.Chosen;
 
         public static implicit operator T5(Choice<T1, T2, T3, T4, T5> choice) =>
-            (Choice<T5>)choice.Choosed;
+            (Choice<T5>)choice.Chosen;
 
         public static bool operator ==(Choice<T1, T2, T3, T4, T5> left, Choice<T1, T2, T3, T4, T5> right) =>
             left.Equals(right);
@@ -60,20 +60,20 @@ namespace Moonad
 
         public bool Equals(Choice<T1, T2, T3, T4, T5> other)
         {
-            if (Choosed is Choice<T1> choice1 && other.Choosed is Choice<T1>)
-                return choice1.Equals(other.Choosed);
+            if (Chosen is Choice<T1> choice1 && other.Chosen is Choice<T1>)
+                return choice1.Equals(other.Chosen);
 
-            if (Choosed is Choice<T2> choice2 && other.Choosed is Choice<T2>)
-                return choice2.Equals(other.Choosed);
+            if (Chosen is Choice<T2> choice2 && other.Chosen is Choice<T2>)
+                return choice2.Equals(other.Chosen);
 
-            if (Choosed is Choice<T3> choice3 && other.Choosed is Choice<T3>)
-                return choice3.Equals(other.Choosed);
+            if (Chosen is Choice<T3> choice3 && other.Chosen is Choice<T3>)
+                return choice3.Equals(other.Chosen);
 
-            if (Choosed is Choice<T4> choice4 && other.Choosed is Choice<T4>)
-                return choice4.Equals(other.Choosed);
+            if (Chosen is Choice<T4> choice4 && other.Chosen is Choice<T4>)
+                return choice4.Equals(other.Chosen);
 
-            if (Choosed is Choice<T5> choice5 && other.Choosed is Choice<T5>)
-                return choice5.Equals(other.Choosed);
+            if (Chosen is Choice<T5> choice5 && other.Chosen is Choice<T5>)
+                return choice5.Equals(other.Chosen);
 
             return false;
         }
@@ -88,7 +88,7 @@ namespace Moonad
 
         public override int GetHashCode()
         {
-            return Choosed switch
+            return Chosen switch
             {
                 Choice<T1> choice => choice.GetHashCode(),
                 Choice<T2> choice => choice.GetHashCode(),

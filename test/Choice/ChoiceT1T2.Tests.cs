@@ -12,7 +12,7 @@
             Choice<int, string> choice = expected;
 
             //Assert
-            Assert.True(choice.Choosed is Choice<int>);
+            Assert.True(choice.Chosen is Choice<int>);
             Assert.True(expected == choice);
         }
 
@@ -59,9 +59,9 @@
             Choice<int, string> choice2 = Choose(false);
 
             //Assert
-            Assert.IsType<Choice<int>>(choice1.Choosed);
+            Assert.IsType<Choice<int>>(choice1.Chosen);
             Assert.Equal<int>(asInt, choice1);
-            Assert.IsType<Choice<string>>(choice2.Choosed);
+            Assert.IsType<Choice<string>>(choice2.Chosen);
             Assert.Equal(asString, choice2);
         }
     }
