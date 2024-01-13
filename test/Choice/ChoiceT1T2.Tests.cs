@@ -1,8 +1,6 @@
-﻿using System.Xml.Serialization;
-
-namespace Moonad.Tests.Choices
+﻿namespace Moonad.Tests.Choices
 {
-    public class ChoiceTests
+    public class ChoiceT1T2Tests
     {
         [Fact]
         public void ImplictT1Conversion()
@@ -14,6 +12,7 @@ namespace Moonad.Tests.Choices
             Choice<int, string> choice = expected;
 
             //Assert
+            Assert.True(choice.Choosed is Choice<int>);
             Assert.True(expected == choice);
         }
 
@@ -41,24 +40,8 @@ namespace Moonad.Tests.Choices
             Choice<string, int> choice2 = value2;
 
             //Assert
-            Assert.Equal(value1, choice1.Choice1Of2);
-            Assert.Equal(value2, choice2.Choice2Of2);
-        }
-
-        [Fact]
-        public void CorrespondingString()
-        {
-            //Arrange
-            var expected1 = "Choice1 123";
-            var expected2 = "Choice2 456";
-
-            //Act
-            Choice<int, string> choice1 = 123;
-            Choice<string, int> choice2 = 456;
-
-            //Assert
-            Assert.Equal(expected1, choice1.ToString());
-            Assert.Equal(expected2, choice2.ToString());
+            Assert.Equal<int>(value1, choice1);
+            Assert.Equal<int>(value2, choice2);
         }
 
         [Fact]
@@ -76,22 +59,10 @@ namespace Moonad.Tests.Choices
             Choice<int, string> choice2 = Choose(false);
 
             //Assert
-            Assert.IsType<int>(choice1.Choice1Of2);
+            Assert.IsType<Choice<int>>(choice1.Choosed);
             Assert.Equal<int>(asInt, choice1);
-            Assert.IsType<string>(choice2.Choice2Of2);
+            Assert.IsType<Choice<string>>(choice2.Choosed);
             Assert.Equal(asString, choice2);
-        }
-
-        [Fact]
-        public void InvalidChoice()
-        {
-            //Arrange
-            Choice<int, string> choice1 = 1;
-            Choice<int, string> choice2 = "2";
-
-            //Assert
-            Assert.Throws<InvalidCastException>(() => choice1.Choice2Of2);
-            Assert.Throws<InvalidCastException>(() => choice2.Choice1Of2);
         }
     }
 }
