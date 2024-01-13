@@ -16,7 +16,7 @@
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional;functional-programming;result;result-type;choice;option;charp-library</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>3.0.0</PackageVersion>
+    <PackageVersion>3.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
