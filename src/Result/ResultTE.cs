@@ -5,44 +5,46 @@ namespace Moonad
     public readonly partial struct Result<TResult, TError> 
         : IEquatable<Result<TResult, TError>> where TResult : notnull where TError : notnull
     {
+        public readonly TResult _resultValue;
+        public readonly TError _resultError;
+
+        public readonly TResult ResultValue => 
+            IsOk
+                ? _resultValue 
+                : throw new ResultValueException();
+
+        public readonly TError ErrorValue => 
+            !IsOk 
+                ? _resultError 
+                : throw new ErrorValueException();
+
         public readonly bool IsOk;
         public readonly bool IsError => !IsOk;
 
-        private readonly TResult? ResultValue;
-        private readonly TError? ErrorValue;
+        private Result(bool isOk, TResult resultValue, TError resultError) =>
+            (IsOk, _resultValue, _resultError) = (isOk, resultValue, resultError);
 
-        private Result(TResult result)
-        {
-            IsOk = true;
-            ResultValue = result;
-            ErrorValue = default;
-        }
+        private Result(TResult resultValue) : this(true, resultValue, default!) { }
 
-        private Result(TError errorValue)
-        {
-            IsOk = false;
-            ResultValue = default;
-            ErrorValue = errorValue;
-        }
+        private Result(TError error) : this(false, default!, error) { }
 
-        public static Result<TResult, TError> Success(TResult result) =>
-            new (result);
+        public static Result<TResult, TError> Ok(TResult result) =>
+            new(result);
 
-        public static Result<TResult, TError> Failure(TError error) =>
+        public static Result<TResult, TError> Error(TError error) =>
             new(error);
 
         public static implicit operator Result<TResult, TError>(TResult result) =>
-            new(result);
+            Ok(result);
 
         public static implicit operator Result<TResult, TError>(TError error) =>
-            new(error);
+            Error(error);
 
-        public TResult Value => IsOk ? ResultValue! : throw new ResultValueException();
-
-        public TError Error => IsError ? ErrorValue! : throw new ResultErrorValueException();
-                
         public static implicit operator TResult(Result<TResult, TError> result) =>
-            result.Value;
+            result.ResultValue;
+
+        public static implicit operator TError(Result<TResult, TError> result) =>
+            result.ErrorValue;
 
         public static implicit operator bool(Result<TResult, TError> result) =>
             result.IsOk;
@@ -56,10 +58,10 @@ namespace Moonad
         public bool Equals(Result<TResult, TError> other)
         {
             if (IsOk && other.IsOk)
-                return ResultValue!.Equals(other.ResultValue);
+                return ResultValue.Equals(other.ResultValue);
 
-            if (IsError && other.IsError)
-                return ErrorValue!.Equals(other.ErrorValue);
+            if (!IsOk && !other.IsOk)
+                return ResultValue.Equals(other.ErrorValue);
 
             return false;
         }
@@ -74,9 +76,9 @@ namespace Moonad
 
         public override int GetHashCode() 
         {
-            return IsOk
-                ? ResultValue!.GetHashCode()
-                : ErrorValue!.GetHashCode();
+            return IsOk 
+                ? ResultValue.GetHashCode() 
+                : ErrorValue.GetHashCode();
         }
     }
 }

@@ -6,7 +6,7 @@
         public void Success() 
         {
             //Arrange
-            var result1 = Result.Sucess();
+            var result1 = Result.Ok();
             Result result2 = true;
 
             //Assert
@@ -20,7 +20,7 @@
         public void Failure()
         {
             //Arrange
-            var result1 = Result.Failure();
+            var result1 = Result.Error();
             Result result2 = false;
 
             //Assert

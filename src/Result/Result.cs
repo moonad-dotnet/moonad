@@ -14,10 +14,10 @@
         public static implicit operator bool(Result result) =>
             result.IsOk;
 
-        public static Result Sucess() =>
+        public static Result Ok() =>
             new (true);
 
-        public static Result Failure() => 
+        public static Result Error() => 
             new (false);
     }
 }

@@ -8,22 +8,22 @@ namespace Moonad
         public Result<U, TError> Bind<U>(Func<TResult, Result<U, TError>> binder) where U : notnull
         {
             if (IsOk)
-                return binder(ResultValue!);
+                return binder(ResultValue);
 
-            return new Result<U, TError>(ErrorValue!);
+            return new Result<U, TError>(ErrorValue);
         }
 
         public bool Contains(TResult value)
         { 
-            if(IsError)
+            if(!IsOk)
                 return false;
 
-            return ResultValue!.Equals(value);
+            return Equals(value);
         }
 
         public int Count()
         { 
-            return IsOk 
+            return IsOk
                 ? 1
                 : 0;
         }
@@ -31,7 +31,7 @@ namespace Moonad
         public TResult DefaultValue(TResult defaultValue) 
         {
             if (IsOk)
-                return ResultValue!;
+                return ResultValue;
 
             return defaultValue;
         }
@@ -39,87 +39,87 @@ namespace Moonad
         public TResult DefaultWith(Func<TError, TResult> defaultFunc)
         {
             if (IsOk)
-                return ResultValue!;
+                return ResultValue;
 
-            return defaultFunc(ErrorValue!);
+            return defaultFunc(ErrorValue);
         }
 
         public bool Exists(Func<TResult, bool> predicate) 
         { 
-            if(IsError)
+            if(!IsOk)
                 return false;
 
-            return predicate(ResultValue!);
+            return predicate(ResultValue);
         }
 
         public TState Fold<TState>(Func<TState, TResult, TState> folder, TState state)
         {
-            if (IsError)
+            if (!IsOk)
                 return state;
 
-            return folder(state, ResultValue!);
+            return folder(state, ResultValue);
         }
 
         public TState FoldBack<TState>(Func<TResult, TState, TState> folder, TState state)
         {
-            if (IsError)
+            if (!IsOk)
                 return state;
 
-            return folder(ResultValue!, state);
+            return folder(ResultValue, state);
         }
 
         public bool ForAll(Func<TResult, bool> predicate)
         { 
-            if(IsError)
+            if(!IsOk)
                 return true;
 
-            return predicate(ResultValue!);
+            return predicate(ResultValue);
         }
 
         public void Iter(Action<TResult> action)
         {
-            if(IsError)
+            if(!IsOk)
                 return;
 
-            action(ResultValue!);
+            action(ResultValue);
         }
 
         public Result<U, TError> Map<U>(Func<TResult, Result<U, TError>> mapping) where U : notnull
         { 
-            if(IsError)
-                return new Result<U, TError>(ErrorValue!);
+            if(!IsOk)
+                return new Result<U, TError>(ErrorValue);
 
-            return mapping(ResultValue!);
+            return mapping(ResultValue);
         }
 
         public Result<TResult, U> MapError<U>(Func<TError, Result<TResult, U>> mapping) where U : notnull
         {
-            if (IsError)
-                return mapping(ErrorValue!);
+            if (!IsOk)
+                return mapping(ErrorValue);
             
-            return new Result<TResult, U>(ResultValue!);
+            return new Result<TResult, U>(ResultValue);
         }
 
         public Array ToArray()
         { 
-            if(IsError)
+            if(!IsOk)
                 return Array.Empty<TResult>();
 
-            return new []{ ResultValue! };
+            return new []{ ResultValue };
         }
 
         public List<TResult> ToList() 
         {
-            if (IsError)
+            if (!IsOk)
                 return [];
 
-            return [ResultValue!];
+            return [ResultValue];
         }
 
         public Option<TResult> ToOption() 
         { 
             if(IsOk)
-                return ResultValue!;
+                return ResultValue;
 
             return Option.None<TResult>();
         }
