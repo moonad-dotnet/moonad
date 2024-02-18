@@ -2,7 +2,7 @@
 
 namespace Moonad
 {
-    public readonly struct Choice<T1, T2, T3> : IChoice, IEquatable<Choice<T1, T2, T3>>
+    public readonly struct Choice<T1, T2, T3> : IEquatable<Choice<T1, T2, T3>>
         where T1 : notnull where T2 : notnull where T3 : notnull
     {
         public readonly IChoice Chosen;

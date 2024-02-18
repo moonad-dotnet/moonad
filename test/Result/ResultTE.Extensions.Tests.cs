@@ -22,7 +22,7 @@
         public void IsNone()
         {
             //Arrange
-            var result = Result<int, string>.Failure("Error!");
+            var result = Result<int, string>.Error("Error!");
 
             //Act
             var valueOption = result.ToValueOption();

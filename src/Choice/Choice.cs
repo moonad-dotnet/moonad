@@ -4,12 +4,12 @@
 
     public readonly struct Choice<T>(T value) : IChoice where T : notnull
     { 
-        private readonly T Choosed = value;
+        private readonly T Chosen = value;
 
         public static implicit operator T(Choice<T> choice) =>
-            choice.Choosed;
+            choice.Chosen;
 
         public override string ToString() =>
-            Choosed.ToString();
+            Chosen.ToString();
     }
 }

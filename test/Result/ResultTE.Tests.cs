@@ -12,9 +12,8 @@
             Result<int, string> result = expected;
 
             Assert.True(result);
-            Assert.True(result.IsOk);
-            Assert.Equal(expected, result.Value);
-            Assert.Throws<ResultErrorValueException>(() => result.Error);
+            Assert.Equal<int>(expected, result);
+            Assert.Throws<ErrorValueException>(() => result.ErrorValue);
         }
 
         [Fact]
@@ -27,9 +26,8 @@
             Result<int, string> result = expected;
 
             Assert.False(result);
-            Assert.True(result.IsError);
-            Assert.Equal(expected, result.Error);
-            Assert.Throws<ResultValueException>(() => result.Value);
+            Assert.Equal(expected, result);
+            Assert.Throws<ResultValueException>(() => result.ResultValue);
         }
     }
 }
