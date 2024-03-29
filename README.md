@@ -125,4 +125,4 @@ public ValueOption<int> ReturnWhenGreaterThanZero(int input) =>
 
 ## Read the full Documentation
 
-Please access [Moonad.NET](https://moonad.net)
+Please access [Moonad.NET](https://moonad.net).
