@@ -5,7 +5,7 @@
 
 A simple F#'s monads port for C#.
 
-This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C#.
+This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C#. Check the docs at [Moonad.NET](https://moonad.net).
 
 ## Installing
 The project's package can be found on [Nuget](https://nuget.org/packages/moonad) and installed by your IDE or shell as following:
@@ -122,7 +122,3 @@ Example 2 - Creating an Option explicitly:
 public ValueOption<int> ReturnWhenGreaterThanZero(int input) =>
     input > 0 ? input : ValueOption<int>.None;
 ```
-
-## Read the full Documentation
-
-Please access [Moonad.NET](https://moonad.net).
