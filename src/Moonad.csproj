@@ -9,14 +9,14 @@
     <Title>$(AssemblyName)</Title>
     <Authors>William Santos</Authors>
     <Description>A simple F#'s monads port for C#</Description>
-    <PackageProjectUrl>https://www.nuget.org/packages/moonad</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/2hit-io/moonad</RepositoryUrl>
+    <PackageProjectUrl>https://moonad.net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/moonad-dotnet/moonad</RepositoryUrl>
     <Copyright>2023 Moonad.NET</Copyright>
     <PackageIcon>Resources\icon.png</PackageIcon>
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional;functional-programming;result;result-type;choice;option;charp-library</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>5.0.0</PackageVersion>
+    <PackageVersion>5.0.1</PackageVersion>
     <Company>Moonad.NET</Company>
   </PropertyGroup>
 
