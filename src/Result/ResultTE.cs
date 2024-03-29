@@ -61,7 +61,7 @@ namespace Moonad
                 return ResultValue.Equals(other.ResultValue);
 
             if (!IsOk && !other.IsOk)
-                return ResultValue.Equals(other.ErrorValue);
+                return ErrorValue.Equals(other.ErrorValue);
 
             return false;
         }
@@ -77,7 +77,7 @@ namespace Moonad
         public override int GetHashCode() 
         {
             return IsOk 
-                ? ResultValue.GetHashCode() 
+                ? ResultValue.GetHashCode()
                 : ErrorValue.GetHashCode();
         }
     }

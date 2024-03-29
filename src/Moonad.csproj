@@ -7,16 +7,17 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Authors>2Hit</Authors>
+    <Authors>William Santos</Authors>
     <Description>A simple F#'s monads port for C#</Description>
     <PackageProjectUrl>https://www.nuget.org/packages/moonad</PackageProjectUrl>
     <RepositoryUrl>https://github.com/2hit-io/moonad</RepositoryUrl>
-    <Copyright>2023 2Hit</Copyright>
+    <Copyright>2023 Moonad.NET</Copyright>
     <PackageIcon>Resources\icon.png</PackageIcon>
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional;functional-programming;result;result-type;choice;option;charp-library</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>4.0.0</PackageVersion>
+    <PackageVersion>5.0.0</PackageVersion>
+    <Company>Moonad.NET</Company>
   </PropertyGroup>
 
   <ItemGroup>

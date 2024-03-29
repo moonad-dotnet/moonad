@@ -4,12 +4,9 @@ namespace Moonad
 {
     public abstract partial class Option<T>
     {
-        internal static OptionValueException NoneValueException() =>
+        internal static OptionException NoneValueException() =>
             new ();
     }
 
-    public sealed class OptionValueException : Exception
-    { 
-        public OptionValueException() : base("Instances of 'None' does not hold values.") { }
-    }
+    public sealed class OptionException() : Exception("Instances of 'None' does not hold values.") { }
 }

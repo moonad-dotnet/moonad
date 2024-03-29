@@ -15,7 +15,7 @@
             if (value.HasValue)
                 return value.Value;
 
-            return new ValueOption<T>();
+            return ValueOption<T>.None();
         }
     }
 }

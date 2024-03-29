@@ -181,7 +181,7 @@
             Option<string> option = nullableString;
 
             //Assert
-            Assert.Throws<OptionValueException>(() => string.IsNullOrWhiteSpace(option));
+            Assert.Throws<OptionException>(() => string.IsNullOrWhiteSpace(option));
         }
 
         [Theory]

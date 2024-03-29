@@ -24,7 +24,7 @@
 
             //Assert
             Assert.True(option.IsNone);
-            Assert.Throws<OptionValueException>(() => option.Get());
+            Assert.Throws<OptionException>(() => option.Get());
         }
     }
 }

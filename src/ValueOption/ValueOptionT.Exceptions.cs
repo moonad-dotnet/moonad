@@ -8,8 +8,5 @@ namespace Moonad
             new("This instance has no value.");
     }
 
-    public class ValueOptionException : Exception
-    {
-        public ValueOptionException(string message) : base(message) { }
-    }
+    public class ValueOptionException(string message) : Exception(message) { }
 }
