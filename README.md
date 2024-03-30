@@ -98,7 +98,7 @@ if(option.IsNone)
 Example 2 - Creating an Option explicitly:
 ```c#
 public Option<int> ReturnWhenGreaterThanZero(int input) =>
-    input > 0 ? input : Option<int>.None;
+    input > 0 ? input : Option.None<T>;
 ```
 
 ### ValueOption
