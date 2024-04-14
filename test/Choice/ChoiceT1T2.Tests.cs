@@ -12,7 +12,7 @@
             Choice<int, string> choice = expected;
 
             //Assert
-            Assert.True(choice.Chosen is Choice<int>);
+            Assert.IsType<Choice<int>>(choice.Chosen);
             Assert.True(expected == choice);
         }
 
