@@ -111,6 +111,11 @@ namespace Moonad
             return mapping(Get());
         }
 
+        public Option<T> Map(Func<T, Option<T>> mapping)
+        {
+            return Map<T>(mapping);
+        }
+
         public Option<TResult> Map2<TResult>(Option<T> option2, Func<T, T, Option<TResult>> mapping) where TResult: notnull
         {
             if (this is None || option2 is None)
@@ -119,12 +124,22 @@ namespace Moonad
             return mapping(Get(), option2.Get());
         }
 
+        public Option<T> Map2(Option<T> option2, Func<T, T, Option<T>> mapping)
+        {
+            return Map2<T>(option2, mapping);
+        }
+
         public Option<TResult> Map3<TResult>(Option<T> option2, Option<T> option3, Func<T, T, T, Option<TResult>> mapping) where TResult : notnull
         {
             if (this is None || option2 is None || option3 is None)
                 return Option.None<TResult>();
 
             return mapping(Get(), option2.Get(), option3.Get());
+        }
+
+        public Option<T> Map3(Option<T> option2, Option<T> option3, Func<T, T, T, Option<T>> mapping)
+        {
+            return Map3<T>(option2, option3, mapping);
         }
 
         public void Match(Action<T> some, Action none)

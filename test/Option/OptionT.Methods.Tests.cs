@@ -259,6 +259,40 @@
             Assert.True(result.IsNone);
         }
 
+        [Fact]
+        public void Map3Some()
+        {
+            //Arrange
+            Option<int> option = 10;
+            Option<int> option2 = 20;
+            Option<int> option3 = 30;
+
+            //Act
+            var result = option.Map3(option2, option3, (x, y, z) => x + y + z);
+
+            //Assert
+            Assert.True(result.IsSome);
+            Assert.Equal(60, result.Get());
+        }
+
+        [Theory]
+        [InlineData(10, null, 20)]
+        [InlineData(null, 10, 20)]
+        [InlineData(null, null, 10)]
+        public void Map3None(int? input1, int? input2, int? input3)
+        {
+            //Arrange
+            var option1 = input1.ToOption();
+            var option2 = input2.ToOption();
+            var option3 = input3.ToOption();
+
+            //Act
+            var result = option1.Map3(option2, option3, (x, y, z) => x + y + z);
+
+            //Asset
+            Assert.True(result.IsNone);
+        }
+
         [Theory]
         [InlineData(3, 13)]
         [InlineData(null, -1)]
