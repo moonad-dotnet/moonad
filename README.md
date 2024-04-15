@@ -55,12 +55,12 @@ public Result Send(Message message)
     try
     {
        ... 
-       return Result.Sucess();
+       return Result.Ok();
     }
     catch(Exception exc)
     {
         ...
-        return Result.Failure();
+        return Result.Error();
     }
 }
 ```
