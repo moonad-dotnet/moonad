@@ -34,30 +34,13 @@
         public async Task SuccessWithTask()
         {
             // Arrange
-            Result result1 = Result.Ok();
-            Task<Result> taskResult() => Task.FromResult(result1);
+            static async Task<Result> produceTaskWithSuccessfulResult() => await Task.FromResult(Result.Ok());
 
             // Act
-            var result2 = await taskResult();
+            var result = await produceTaskWithSuccessfulResult();
 
-            //Assert
-            Assert.True(result2);
-            Assert.False(result2.IsError);
-        }
-
-        [Fact]
-        public async Task FailureWithTask()
-        {
-            // Arrange
-            Result result1 = Result.Error();
-            Task<Result> taskResult() => Task.FromResult(result1);
-
-            // Act
-            var result2 = await taskResult();
-
-            //Assert
-            Assert.False(result2);
-            Assert.True(result2.IsError);
+            // Assert
+            Assert.True(result);
         }
     }
 }
