@@ -31,10 +31,11 @@
         }
 
         [Fact]
-        public async Task SuccessWithTask()
+        public async Task InTask()
         {
             // Arrange
-            static async Task<Result> produceTaskWithSuccessfulResult() => await Task.FromResult(Result.Ok());
+            static async Task<Result> produceTaskWithSuccessfulResult() => 
+                await Task.FromResult(Result.Ok());
 
             // Act
             var result = await produceTaskWithSuccessfulResult();
