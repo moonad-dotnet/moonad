@@ -1,6 +1,6 @@
 ﻿namespace Moonad
 {
-    public readonly ref struct Result
+    public readonly struct Result
     {
         public readonly bool IsOk;
         public readonly bool IsError => !IsOk;

@@ -29,5 +29,18 @@
             Assert.False(result2);
             Assert.True(result2.IsError);
         }
+
+        [Fact]
+        public async Task SuccessWithTask()
+        {
+            // Arrange
+            static async Task<Result> produceTaskWithSuccessfulResult() => await Task.FromResult(Result.Ok());
+
+            // Act
+            var result = await produceTaskWithSuccessfulResult();
+
+            // Assert
+            Assert.True(result);
+        }
     }
 }
