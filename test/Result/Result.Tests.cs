@@ -31,7 +31,7 @@
         }
 
         [Fact]
-        public async Task InTask()
+        public async Task AsTaskGenericParameter()
         {
             // Arrange
             static async Task<Result> produceTaskWithSuccessfulResult() => 
