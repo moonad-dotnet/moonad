@@ -4,7 +4,7 @@ namespace Moonad
 {
     public readonly struct Result<TError>: IEquatable<Result<TError>> where TError : notnull
     {
-        public readonly TError _errorValue;
+        private readonly TError _errorValue;
 
         public readonly TError ErrorValue =>
             !IsOk
