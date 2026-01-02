@@ -1,8 +1,7 @@
 ﻿namespace Moonad
 {
-    public sealed class Unit
+    public readonly struct Unit
     {
         public static readonly Unit Value = new();
-        private Unit() { }
     }
 }
