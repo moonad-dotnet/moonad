@@ -1,10 +1,9 @@
-﻿
-namespace Moonad.Tests.State
+﻿namespace Moonad.Tests.State
 {
     public class StateMethodsTests
     {
         [Fact]
-        public void Run_ReturnsValueAndNewState()
+        public void RunReturnsValueAndNewState()
         {
             // Arrange
             var st = new State<int, string>(s => ($"v{s}", s + 1));
@@ -18,7 +17,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Eval_ReturnsValueOnly()
+        public void EvalReturnsValueOnly()
         {
             // Arrange
             var st = new State<int, int>(s => (s * 2, s + 3));
@@ -31,7 +30,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Exec_ReturnsStateOnly()
+        public void ExecReturnsStateOnly()
         {
             // Arrange
             var st = new State<int, int>(s => (s * 2, s + 3));
@@ -44,7 +43,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Apply_AppliesFunctionInsideState()
+        public void ApplyAppliesFunctionInsideState()
         {
             // Arrange
             var sf = new State<int, Func<int, int>>(s => (x => x + s, s + 1));
@@ -61,11 +60,11 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Bind_ChainsComputations_ThreadingState()
+        public void BindChainsComputationsThreadingState()
         {
             // Arrange
             var a = new State<int, int>(s => (s + 1, s + 2));
-            State<int, int> next(int v) => new State<int, int>(s => (v * 3, s + v));
+            State<int, int> next(int v) => new(s => (v * 3, s + v));
 
             // Act
             var bound = a.Bind(next, a);
@@ -78,11 +77,11 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Delay_DefersExecution()
+        public void DelayDefersExecution()
         {
             // Arrange
             var executed = false;
-            State<int, int> body() => new State<int, int>(s =>
+            State<int, int> body() => new(s =>
             {
                 executed = true;
                 return (s + 10, s + 1);
@@ -99,7 +98,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Get_ReturnsCurrentState()
+        public void GetReturnsCurrentState()
         {
             // Arrange
             var st = new State<int, int>(s => (s, s));
@@ -113,7 +112,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Gets_MapsStateToValueWithoutChangingState()
+        public void GetsMapsStateToValueWithoutChangingState()
         {
             // Arrange
             var st = new State<int, int>(s => (s, s));
@@ -127,25 +126,24 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Kleisli_ComposesTwoFunctions()
+        public void KleisliComposesTwoFunctions()
         {
             // Arrange
-            State<int, int> f(int t) => new State<int, int>(s => (t + s, s + 1));
-            State<int, string> g(int u) => new State<int, string>(s => ($"{u}-{s}", s + u));
+            State<int, int> f(int t) => new(s => (t + s, s + 1));
+            State<int, string> g(int u) => new(s => ($"{u}-{s}", s + u));
             var k = new State<int, int>(s => (s, s)).Kleisli(f, g);
 
             // Act
-            var res = k(5);
-            var (value, state) = res.Run(3);
+            var (value, state) = k(5).Run(3);
 
             // Assert
-            // f(5): (10,4); g(10): ("10-4", 4+10=14)
-            Assert.Equal("10-4", value);
-            Assert.Equal(14, state);
+            // f(5): (8,4); g(8): ("8-4", 4+8=12)
+            Assert.Equal("8-4", value);
+            Assert.Equal(12, state);
         }
 
         [Fact]
-        public void Lift_MapsValue_PreservingState()
+        public void LiftMapsValuePreservingState()
         {
             // Arrange
             var st = new State<int, int>(s => (s + 2, s + 3));
@@ -155,12 +153,12 @@ namespace Moonad.Tests.State
             var (value, state) = lifted.Run(1);
 
             // Assert
-            Assert.Equal((1 + 2) * 2, value);
+            Assert.Equal(6, value);
             Assert.Equal(4, state);
         }
 
         [Fact]
-        public void Map_MapsValue_PreservingState()
+        public void MapMapsValuePreservingState()
         {
             // Arrange
             var st = new State<int, int>(s => (s + 2, s + 3));
@@ -175,7 +173,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Lift2_CombinesTwoStates()
+        public void Lift2CombinesTwoStates()
         {
             // Arrange
             var x = new State<int, int>(s => (s + 1, s + 2));
@@ -192,7 +190,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Map2_CombinesTwoStates()
+        public void Map2CombinesTwoStates()
         {
             // Arrange
             var x = new State<int, int>(s => (s + 1, s + 2));
@@ -209,7 +207,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Map3_CombinesThreeStates()
+        public void Map3CombinesThreeStates()
         {
             // Arrange
             var x = new State<int, int>(s => (s + 1, s + 2));
@@ -227,7 +225,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Modify_TransformsState_ReturnsUnit()
+        public void ModifyTransformsStateReturnsUnit()
         {
             // Arrange
             var st = new State<int, int>(s => (s, s));
@@ -242,7 +240,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Put_SetsNewState_ReturnsUnit()
+        public void PutSetsNewStateReturnsUnit()
         {
             // Arrange
             var st = new State<int, int>(s => (s, s));
@@ -257,7 +255,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void SequenceRight_RunsSecondReturningItsResult()
+        public void SequenceRightRunsSecondReturningItsResult()
         {
             // Arrange
             var x = new State<int, int>(s => (s, s + 1));
@@ -273,7 +271,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void SequenceLeft_RunsBoth_ReturnsFirstValue_FinalStateFromSecond()
+        public void SequenceLeftRunsBothReturnsFirstValueFinalStateFromSecond()
         {
             // Arrange
             var x = new State<int, string>(s => ($"x{s}", s + 1));
@@ -290,7 +288,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Throw_RethrowsExceptionOnRun()
+        public void ThrowRethrowsExceptionOnRun()
         {
             // Arrange
             var ex = new InvalidOperationException("boom");
@@ -301,7 +299,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void TryFinally_RunsCompensation()
+        public void TryFinallyRunsCompensation()
         {
             // Arrange
             var called = false;
@@ -318,7 +316,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void TryWith_CatchesAndHandlesException()
+        public void TryWithCatchesAndHandlesException()
         {
             // Arrange
             var exBody = new State<int, int>(_ => throw new InvalidOperationException("boom"));
@@ -339,7 +337,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Using_DisposesResource()
+        public void UsingDisposesResource()
         {
             // Arrange
             var res = new DummyResource();
@@ -356,7 +354,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Zip_RunsBoth_ReturnsTupleValue_AndFinalState()
+        public void ZipRunsBothReturnsTupleValueAndFinalState()
         {
             // Arrange
             var x = new State<int, string>(s => ($"x{s}", s + 1));

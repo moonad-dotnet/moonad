@@ -41,7 +41,8 @@ namespace Moonad
             t => new State<S, V>(s =>
                  {
                     var (u, i) = f(t).Run(s);
-                    return g(u).Run(i);
+                    var (x, y) = g(u).Run(i);
+                    return (x, y);
                  });
 
         public State<S, U> Lift<U>(Func<T, U> f) =>

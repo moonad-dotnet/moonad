@@ -5,7 +5,7 @@ namespace Moonad.Tests.State
     public class StateExtensionsTests
     {
         [Fact]
-        public void Select_ProjectsValue_PreservingState()
+        public void SelectProjectsValuePreservingState()
         {
             // Arrange
             var st = new State<int, int>(s => (s + 1, s + 2));
@@ -20,7 +20,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void SelectMany_Binds_ComposesStateCorrectly()
+        public void SelectManyBindsComposesStateCorrectly()
         {
             // Arrange
             var st = new State<int, int>(s => (s + 2, s + 3));
@@ -37,7 +37,7 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Where_PassesPredicate_ReturnsSameValueAndState()
+        public void WherePassesPredicateReturnsSameValueAndState()
         {
             // Arrange
             var st = new State<int, int>(s => (s * 2, s + 1));
@@ -52,18 +52,18 @@ namespace Moonad.Tests.State
         }
 
         [Fact]
-        public void Where_FailsPredicate_ThrowsInvalidOperationException()
+        public void WhereFailsPredicateThrowsInvalidOperationException()
         {
             // Arrange
             var st = new State<int, int>(s => (s + 1, s));
 
             // Act & Assert
             var filtered = st.Where(v => v % 2 == 0);
-            Assert.Throws<InvalidOperationException>(() => filtered.Run(1));
+            Assert.Throws<InvalidOperationException>(() => filtered.Run(0));
         }
 
         [Fact]
-        public void Linq_Query_Syntax_WorksWithSelect_SelectMany_Where()
+        public void LinqQuerySyntaxWorksWithSelectSelectManyWhere()
         {
             // Arrange
             var baseState = new State<int, int>(s => (s + 1, s + 2));
