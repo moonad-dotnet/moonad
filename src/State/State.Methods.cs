@@ -65,7 +65,7 @@ namespace Moonad
                 return (f(a, b), s3);
             });
 
-        public static State<S, W> Map3<U, V, W>(Func<T, U, V, W> f, State<S, T> x, State<S, U> y, State<S, V> z) =>
+        public State<S, W> Map3<U, V, W>(Func<T, U, V, W> f, State<S, T> x, State<S, U> y, State<S, V> z) =>
             new(s =>
             {
                 var (a, s2) = x.Run(s);
@@ -91,24 +91,24 @@ namespace Moonad
                 return (vx, s3);
             });
 
-        public static State<S, T> Throw(Exception ex) =>
+        public State<S, T> Throw(Exception ex) =>
             new(_ => throw ex);
 
-        public static State<S, T> TryFinally(State<S, T> body, Action compensation) =>
+        public State<S, T> TryFinally(State<S, T> body, Action compensation) =>
             new(s =>
             {
                 try { return body.Run(s); }
                 finally { compensation(); }
             });
 
-        public static State<S, T> TryWith(State<S, T> body, Func<Exception, State<S, T>> handler) =>
+        public State<S, T> TryWith(State<S, T> body, Func<Exception, State<S, T>> handler) =>
             new(s =>
             {
                 try { return body.Run(s); }
                 catch (Exception ex) { return handler(ex).Run(s); }
             });
 
-        public static State<S, T> Using<R>(R resource, Func<R, State<S, T>> body) where R : IDisposable =>
+        public State<S, T> Using<R>(R resource, Func<R, State<S, T>> body) where R : IDisposable =>
             TryFinally(body(resource), () => resource?.Dispose());
 
         public State<S, (T, U)> Zip<U>(State<S, T> x, State<S, U> y) =>
