@@ -31,7 +31,7 @@ F# offers in it's core library four monads to help you to have more flexibility 
 ### Choice
 Also known as `Either` in some languages this monad offers you the possibility to choose one of two types to be hold by its instance.
 
-Example:
+**Example:**
 
 ```c#
 public Choice<int, string> Choose(bool returnInt)
@@ -47,7 +47,7 @@ public Choice<int, string> Choose(bool returnInt)
 
 A type to express the final state of a given processing revealing its success of failure and optionally carrying a value or an error.
 
-Example 1 - Success indicator:
+**Example 1 - Success indicator:**
 
 ```c#
 public Result Send(Message message)
@@ -65,7 +65,7 @@ public Result Send(Message message)
 }
 ```
 
-Example 2 - Value and error returning:
+**Example 2 - Value and error returning:**
 
 ```c#
 public Result<User, IError> Create(...)
@@ -82,7 +82,7 @@ public Result<User, IError> Create(...)
 
 This monad, also known as `Maybe`, has as its goal preventing the `NullReferenceException` by notifying the existence or absense of a value. Once a potentially null, or simply absent, value is converted to Option it's evaluated to a `Some` instance, which carry the value, or a `None` instance, which replaces the `null` and let the client works as `null` doesn't exists.
 
-Example 1 - Preventing null from a 3rd party lib:
+**Example 1 - Preventing null from a 3rd party lib:**
 ```c#
 //lib.Method returns a string
 
@@ -95,7 +95,7 @@ if(option.IsNone)
     Console.WriteLine($"No returned value.");
 ```
 
-Example 2 - Creating an Option explicitly:
+**Example 2 - Creating an Option explicitly:**
 ```c#
 public Option<int> ReturnWhenGreaterThanZero(int input) =>
     input > 0 ? input : Option.None<T>;
@@ -104,7 +104,7 @@ public Option<int> ReturnWhenGreaterThanZero(int input) =>
 ### ValueOption
 It has the very same concept as Option but is intended to use with value types to be faster in performance critical scenarios.
 
-Example 1 - Preventing null from a 3rd party lib:
+**Example 1 - Preventing null from a 3rd party lib:**
 ```c#
 //lib.Method returns a nullable int
 
@@ -117,8 +117,22 @@ if(option.IsNone)
     Console.WriteLine($"No returned value.");
 ```
 
-Example 2 - Creating an Option explicitly:
+**Example 2 - Creating an Option explicitly:**
 ```c#
 public ValueOption<int> ReturnWhenGreaterThanZero(int input) =>
     input > 0 ? input : ValueOption<int>.None;
+```
+
+### State
+
+The `State<T, S>` is a functional abstraction that encapsulates computations that depend on and modify state. It allows you to work with state in an immutable and composable way, avoiding the explicit passing of state between functions.
+
+**Example:**
+
+```csharp
+var state = new State<int, int>(s => (s + 1, s + 2));
+var mapped = state.Map(x => x * 2, state);
+var (value, newState) = mapped.Run(3);
+// value: 8 ((3 + 1) * 2)
+// newState: 5 (3 + 2)
 ```
