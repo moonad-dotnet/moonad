@@ -16,7 +16,7 @@
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional;functional-programming;result;result-type;choice;either;option;maybe;state;charp-library</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>5.5.0</PackageVersion>
+    <PackageVersion>5.5.1</PackageVersion>
     <Company>Moonad.NET</Company>
   </PropertyGroup>
 

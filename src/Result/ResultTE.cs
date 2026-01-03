@@ -5,8 +5,8 @@ namespace Moonad
     public readonly partial struct Result<TResult, TError> 
         : IEquatable<Result<TResult, TError>> where TResult : notnull where TError : notnull
     {
-        public readonly TResult _resultValue;
-        public readonly TError _resultError;
+        private readonly TResult _resultValue;
+        private readonly TError _resultError;
 
         public readonly TResult ResultValue => 
             IsOk
