@@ -2,10 +2,14 @@
 
 ![Version](https://img.shields.io/nuget/v/moonad?label=version&color=029632) ![Tests](https://img.shields.io/github/actions/workflow/status/moonad-dotnet/moonad/dotnet.yml?logo=github&label=tests&color=029632) ![Nuget](https://img.shields.io/nuget/dt/moonad?logo=nuget&label=downloads&color=029632)
 
-
 A simple F#'s monads port for C#.
 
 This library contains the main F#'s monads found on FSharp.Core lib written in, and adapted for, C#. Check the docs at [Moonad.NET](https://moonad.net).
+
+## Contributing
+You can contribute to this project by buying me a coffee.
+<br/><br/> <a href='https://ko-fi.com/B0B51RXT3I' target='_blank'><img height='36' style='border:0px;height:30px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 
 ## Installing
 The project's package can be found on [Nuget](https://nuget.org/packages/moonad) and installed by your IDE or shell as following:
