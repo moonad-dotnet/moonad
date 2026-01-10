@@ -1,6 +1,6 @@
 # Moonad
 
-![Version](https://img.shields.io/nuget/v/moonad?label=version&color=029632) ![Tests](https://img.shields.io/github/actions/workflow/status/moonad-dotnet/moonad/dotnet.yml?logo=github&label=tests&color=029632) ![Nuget](https://img.shields.io/nuget/dt/moonad?logo=nuget&label=downloads&color=029632) ![Static Badge](https://img.shields.io/badge/%24-Buy%20me%20a%20coffe-B69573?label=%24%24%24&labelColor=413130&link=https%3A%2F%2Fko-fi.com%2Fmoonad_dotnet)
+![Version](https://img.shields.io/nuget/v/moonad?label=version&color=029632) ![Tests](https://img.shields.io/github/actions/workflow/status/moonad-dotnet/moonad/dotnet.yml?logo=github&label=tests&color=029632) ![Nuget](https://img.shields.io/nuget/dt/moonad?logo=nuget&label=downloads&color=029632) ![Static Badge](https://img.shields.io/badge/-Buy%20me%20a%20coffee-B28F6B?logo=kofi&labelColor=413130&link=https%3A%2F%2Fko-fi.com%2Fmoonad_dotnet)
 
 A simple F#'s monads port for C#.
 
