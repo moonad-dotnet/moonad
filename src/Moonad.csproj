@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <TargetFramework>net11.0</TargetFramework>
+    <LangVersion>15.0</LangVersion>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -12,16 +12,16 @@
     <PackageProjectUrl>https://moonad.net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/moonad-dotnet/moonad</RepositoryUrl>
     <Copyright>2023 Moonad.NET</Copyright>
-    <PackageIcon>moonad.png</PackageIcon>
+    <PackageIcon>moonad-256.png</PackageIcon>
     <PackageLicenseFile>Resources\LICENSE</PackageLicenseFile>
     <PackageTags>monad;monads;functional;functional-programming;result;result-type;choice;either;option;maybe;state;charp-library</PackageTags>
     <PackageReadmeFile>Resources\README.md</PackageReadmeFile>
-    <PackageVersion>5.5.1</PackageVersion>
+    <PackageVersion>11.0.0</PackageVersion>
     <Company>Moonad.NET</Company>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\moonad.png">
+    <None Include="..\moonad-256.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
       <Visible>False</Visible>

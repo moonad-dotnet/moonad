@@ -49,7 +49,7 @@ namespace Moonad.Tests.Options
             int? nullableInt = 1;
 
             //Act
-            Option<int> option = nullableInt;
+            Option<int> option = nullableInt.ToOption();
 
             //Assert
             Assert.True(option.IsSome);
@@ -89,7 +89,7 @@ namespace Moonad.Tests.Options
             Option<int> option = input.ToOption();
 
             //Assert
-            Assert.Equal(expected, option);
+            Assert.Equal(expected, option.IsSome);
         }
 
         [Theory]

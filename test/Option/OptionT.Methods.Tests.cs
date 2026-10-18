@@ -15,7 +15,7 @@
             var result = option.Bind(BindByte);
 
             //Assert
-            Assert.Equal(expected, option.IsSome);
+            Assert.Equal(expected, result.IsSome);
         }
 
         [Theory]
@@ -41,7 +41,7 @@
         public void Count(string? input, int expected)
         {
             //Arrange
-            Option<string> option = input;
+            Option<string> option = input!;
 
             //Act
             var count = option.Count();
@@ -56,7 +56,7 @@
         public void DefaultValue(string? input, string expected)
         {
             //Arrange
-            Option<string> option = input;
+            Option<string> option = input!;
 
             //Act
             var result = option.DefaultValue(expected);
@@ -88,7 +88,7 @@
         public void Exists(string? input, bool expected)
         {
             //Arrange
-            Option<string> option = input;
+            Option<string> option = input!;
 
             //Act
             var result = option.Exists(s => !string.IsNullOrWhiteSpace(s));
@@ -104,7 +104,7 @@
         public void Filter(string? input, bool expected)
         {
             //Arrange
-            Option<string> option = input;
+            Option<string> option = input!;
 
             //Act
             var result = option.Filter(s => !string.IsNullOrWhiteSpace(s));
@@ -207,7 +207,7 @@
             Option<int> option = 10;
 
             //Act
-            var result = option.Map(i => i * 2);
+            var result = option.Map<int>(i => i * 2);
 
             //Assert
             Assert.True(result.IsSome);
@@ -221,7 +221,7 @@
             var option = Option.None<int>();
 
             //Act
-            var result = option.Map(i => i ^ 2);
+            var result = option.Map<int>(i => i ^ 2);
 
             //Assert
             Assert.True(result.IsNone);
@@ -235,7 +235,7 @@
             var option2 = 20;
 
             //Act
-            var result = option.Map2(option2, (x, y) => x * y);
+            var result = option.Map2<int>(option2, (x, y) => x * y);
 
             //Assert
             Assert.True(result.IsSome);
@@ -253,7 +253,7 @@
             var option2 = input2.ToOption();
 
             //Act
-            var result = option1.Map2(option2, (x, y) => x * y);
+            var result = option1.Map2<int>(option2, (x, y) => x * y);
 
             //Asset
             Assert.True(result.IsNone);
@@ -268,7 +268,7 @@
             Option<int> option3 = 30;
 
             //Act
-            var result = option.Map3(option2, option3, (x, y, z) => x + y + z);
+            var result = option.Map3<int>(option2, option3, (x, y, z) => x + y + z);
 
             //Assert
             Assert.True(result.IsSome);
@@ -287,7 +287,7 @@
             var option3 = input3.ToOption();
 
             //Act
-            var result = option1.Map3(option2, option3, (x, y, z) => x + y + z);
+            var result = option1.Map3<int>(option2, option3, (x, y, z) => x + y + z);
 
             //Asset
             Assert.True(result.IsNone);
@@ -363,7 +363,7 @@
         {
             //Arrange
             var option = input.ToOption();
-            var ifNone = ifNoneValue!;
+            var ifNone = ifNoneValue.ToOption();
 
             //Act
             var result = option.OrElseWith(() => ifNone);
@@ -395,7 +395,7 @@
         [InlineData(null, 0)]
         public void ToArray(int? input, int expected)
         {
-            //Arrage
+            //Arrange
             var option = input.ToOption();
 
             //Act
@@ -410,7 +410,7 @@
         [InlineData(null, 0)]
         public void ToList(int? input, int expected)
         {
-            //Arrage
+            //Arrange
             var option = input.ToOption();
 
             //Act
