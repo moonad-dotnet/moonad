@@ -42,6 +42,9 @@ public Choice<int, string> Choose(bool returnInt)
 }
 ```
 
+#### Note:
+From version 11.0 the Choice type was removed in favor of the new C# [Union Types](https://devblogs.microsoft.com/dotnet/csharp-15-union-types/). Older versions still support it.
+
 ### Result
 
 A type to express the final state of a given processing revealing its success of failure and optionally carrying a value or an error.
