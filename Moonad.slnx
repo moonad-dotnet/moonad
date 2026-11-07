@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Resources/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="src/Moonad.csproj" />
+  <Project Path="test/Moonad.Tests.csproj" />
+</Solution>
